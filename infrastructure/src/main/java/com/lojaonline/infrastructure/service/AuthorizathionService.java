@@ -1,4 +1,4 @@
-package com.loja_online.loja_online.service;
+package com.lojaonline.infrastructure.service;
 
 import com.loja_online.loja_online.model.Usuario.Usuario;
 import com.loja_online.loja_online.model.Usuario.UsuarioDetails;
