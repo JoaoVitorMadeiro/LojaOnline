@@ -1,4 +1,4 @@
-package com.lojaonline.core.domain;
+package com.lojaonline.core.domain.enums;
 
 public class CategoryEnum {
     public enum Category {

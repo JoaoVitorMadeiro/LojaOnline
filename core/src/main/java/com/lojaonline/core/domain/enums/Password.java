@@ -1,4 +1,4 @@
-package com.lojaonline.core.domain;
+package com.lojaonline.core.domain.enums;
 
 public class Password {
     private static final String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
