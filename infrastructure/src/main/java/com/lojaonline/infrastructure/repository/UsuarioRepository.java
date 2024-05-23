@@ -1,8 +1,9 @@
-package com.loja_online.loja_online.model.Usuario;
+package com.lojaonline.infrastructure.repository;
 
+import com.lojaonline.core.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    Usuario findByNome(String nome);
+public interface UsuarioRepository extends JpaRepository<User, Long> {
+    User findByNome(String nome);
 }

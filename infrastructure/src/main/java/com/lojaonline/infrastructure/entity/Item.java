@@ -1,10 +1,10 @@
 package com.lojaonline.infrastructure.entity;
 
+import com.lojaonline.domain.enums.CategoryEnum;
 import java.time.LocalDate;
-
-
 import jakarta.persistence.*;
 import lombok.*;
+
 
 @Entity
 @Table(name = "item")

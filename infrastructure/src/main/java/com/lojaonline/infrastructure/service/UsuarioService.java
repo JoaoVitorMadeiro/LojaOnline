@@ -1,49 +1,36 @@
-package com.loja_online.loja_online.service;
+package com.lojaonline.infrastructure.service;
 
 import org.springframework.stereotype.Service;
-import com.loja_online.loja_online.model.Usuario.Usuario;
-import com.loja_online.loja_online.model.Usuario.UsuarioDTO;
-import com.loja_online.loja_online.model.Usuario.UsuarioRepository;
-import com.loja_online.loja_online.model.Usuario.EnumRole;
+import com.lojaonline.infrastructure.dto.UsuarioDTO;
+import com.lojaonline.infrastructure.entity.Usuario;
+import com.lojaonline.infrastructure.enums.EnumRole;
+import com.lojaonline.infrastructure.repository.UsuarioRepository;
+
 @Service
 public class UsuarioService {
-
-    private final UsuarioRepository usuarioRepository;
-
+    private UsuarioRepository usuarioRepository;
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
-
-    public Usuario salvar(UsuarioDTO usuarioDto) {
+    public Usuario save(UsuarioDTO usuarioDTO) {
         Usuario usuario = new Usuario();
-        usuario.setNome(usuarioDto.getNome());
-        // if(setEmail(usuarioDto.getEmail()) == "@gmail.com"){
-        //     return null;
-        // }
-        usuario.setEmail(usuarioDto.getEmail());
-        usuario.setSenha(usuarioDto.getSenha());
+        usuario.setNome(usuarioDTO.getNome());
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setSenha(usuarioDTO.getSenha());
         usuario.setRole(EnumRole.ROLE_USER);
         return usuarioRepository.save(usuario);
     }
-    public Usuario salvarAdm(UsuarioDTO usuarioDto) {
-        Usuario usuario = new Usuario();
-        usuario.setNome(usuarioDto.getNome());
-        usuario.setEmail(usuarioDto.getEmail());
-        usuario.setSenha(usuarioDto.getSenha());
-        usuario.setRole(EnumRole.ROLE_ADMIN);
+    public Usuario findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+    public Usuario findById(Long id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+    public Usuario update(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
-
-    public void TrocarCargo(Long idUsuario) {
-        Usuario usuario = usuarioRepository.findById(idUsuario).get();
-       if (usuario.getRole() == EnumRole.ROLE_USER){
-        usuario.setRole(EnumRole.ROLE_ADMIN);
-       }
-       else{
-            usuario.setRole(EnumRole.ROLE_USER);
-       }
-       usuarioRepository.save(usuario);
+    public void delete(Long id) {
+        usuarioRepository.deleteById(id);
     }
-    
 
 }

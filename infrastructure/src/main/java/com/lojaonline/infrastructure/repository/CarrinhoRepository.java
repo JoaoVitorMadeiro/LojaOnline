@@ -1,5 +1,6 @@
-package com.loja_online.loja_online.model.Carrinho;
+package com.lojaonline.infrastructure.repository;
 
+import com.lojaonline.infrastructure.entity.Carrinho;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

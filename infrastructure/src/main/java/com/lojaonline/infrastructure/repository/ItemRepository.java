@@ -1,8 +1,9 @@
-package com.loja_online.loja_online.model.Item;
+package com.lojaonline.infrastructure.repository;
 
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
+import com.lojaonline.infrastructure.entity.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
 

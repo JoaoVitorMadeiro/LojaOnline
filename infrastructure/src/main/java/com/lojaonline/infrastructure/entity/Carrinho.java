@@ -18,7 +18,7 @@ public class Carrinho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long idUsuario;
-    private List<Long> idItem;
+    private Item  idItem;
     private Integer quantidade;
 
     public Carrinho(Long idUsuario, Long idItem, Integer quantidade) {
