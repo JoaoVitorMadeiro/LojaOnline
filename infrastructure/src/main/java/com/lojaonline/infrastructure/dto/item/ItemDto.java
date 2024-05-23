@@ -1,4 +1,4 @@
-package com.loja_online.loja_online.model.Item;
+package com.lojaonline.infrastructure.dto.item;
 
 // import jakarta.persistence.GeneratedValue;
 // import jakarta.persistence.GenerationType;
