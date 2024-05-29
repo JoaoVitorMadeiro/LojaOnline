@@ -1,8 +1,9 @@
 package com.lojaonline.infrastructure.service;
 
-import com.loja_online.loja_online.model.Usuario.Usuario;
-import com.loja_online.loja_online.model.Usuario.UsuarioDetails;
-import com.loja_online.loja_online.model.Usuario.UsuarioRepository;
+
+import com.lojaonline.infrastructure.entity.UserEntity;
+import com.lojaonline.infrastructure.repository.UsuarioRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

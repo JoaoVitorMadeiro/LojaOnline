@@ -1,4 +1,4 @@
-package com.loja_online.loja_online.service;
+package com.lojaonline.infrastructure.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

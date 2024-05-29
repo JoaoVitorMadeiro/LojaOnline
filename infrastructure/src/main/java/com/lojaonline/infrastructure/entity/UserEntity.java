@@ -5,6 +5,7 @@ import com.lojaonline.core.domain.enums.EnumUserType;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 import java.util.UUID;
 
 @Entity

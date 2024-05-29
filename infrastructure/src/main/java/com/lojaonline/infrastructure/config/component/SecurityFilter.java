@@ -1,7 +1,8 @@
-package com.loja_online.loja_online.config.component;
+package com.lojaonline.infrastructure.config.component;
 
 
 
+import com.lojaonline.infrastructure.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,10 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.loja_online.loja_online.model.Usuario.Usuario;
-import com.loja_online.loja_online.model.Usuario.UsuarioDetails;
-import com.loja_online.loja_online.model.Usuario.UsuarioRepository;
-import com.loja_online.loja_online.service.TokenService;
+
+import com.lojaonline.infrastructure.repository.UsuarioRepository;
+
 
 import java.io.IOException;
 

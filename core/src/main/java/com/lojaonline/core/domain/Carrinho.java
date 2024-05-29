@@ -1,16 +1,14 @@
 package com.lojaonline.core.domain;
 
-import com.lojaonline.core.exception.Pedido;
-
 import java.util.UUID;
 
 public class Carrinho {
     private UUID id;
     private Item items;
-    private Pedido pedido;
+    private User.Pedido pedido;
     private Favorito favorito;
 
-    public Carrinho(UUID id, Item items, Pedido pedido, Favorito favorito) {
+    public Carrinho(UUID id, Item items, User.Pedido pedido, Favorito favorito) {
         this.id = id;
         this.items = items;
         this.pedido = pedido;
@@ -30,10 +28,10 @@ public class Carrinho {
     public void setItems(Item items) {
         this.items = items;
     }
-    public Pedido getPedido() {
+    public User.Pedido getPedido() {
         return pedido;
     }
-    public void setPedido(Pedido pedido) {
+    public void setPedido(User.Pedido pedido) {
         this.pedido = pedido;
     }
     public Favorito getFavorito() {
