@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lojaOnline</groupId>
-    <artifactId>aplicationItem</artifactId>
+    <artifactId>application</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>aplicationItem</name>
-    <description>aplicationItem</description>
+    <name>application</name>
+    <description>application</description>
     <properties>
         <java.version>22</java.version>
     </properties>
@@ -27,6 +27,22 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.lojaOnline</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lojaOnline</groupId>
+            <artifactId>usecase</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
