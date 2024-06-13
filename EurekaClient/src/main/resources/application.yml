@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: msclientes
+
+server:
+    port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka/
+      instance:
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
