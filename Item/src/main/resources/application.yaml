@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: item
+  datasource:
+    url: jdbc:mariadb://localhost:3306/loja_online
+    username: root
+    password: 1234
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    defer-datasource-initialization: true
+    show-sql: true
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+    topic:
+      name: ${KAFKA_TOPIC:user}
+    consumer:
+      group-id: user-group
+      auto-offset-reset: latest
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: OFF
+
+server:
+  port: 8081
+
+api:
+  security:
+    token:
+      secret: "${JWT_SECRET:32rASD213dsa}"
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instanceId:${random.value}}
