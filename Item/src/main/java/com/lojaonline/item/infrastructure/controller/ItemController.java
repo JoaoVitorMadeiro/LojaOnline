@@ -51,6 +51,8 @@ public class ItemController {
     public void deleteItem(@PathVariable("id") Item idItem,  @RequestParam boolean isAdmin) {
         itemService.deleteItem(idItem, isAdmin);
     }
+
+
    
     
 }

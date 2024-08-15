@@ -9,6 +9,8 @@ public class User {
     private String email;
     private String password;
     private EnumUserType type;
+    private Wallet wallet;
+    private TransactionPin transactionPin;
 
     public User(Long id, String name, String email, String password, EnumUserType type) {
         this.id = id;
@@ -67,6 +69,30 @@ public class User {
                 (this.email == null || this.email.isEmpty()) ||
                 (this.password == null || this.password.isEmpty()) ||
                 (this.type == null);
+    }
+    public boolean PasswordValid(String password){
+       if(password.contains("ABCDEFGHIJKLMNOPQRSTUVWXYZ")  && password.contains("abcdefghijklmnopqrstuvwxyz") && password.length() >= 8 && password.contains("@#$%&*!^")){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
+    public boolean EmailValid(String email){
+        if(email.contains("@gmail.com")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean NameLimit(String name){
+        if(name.length() >= 3 && name.length() <= 50){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

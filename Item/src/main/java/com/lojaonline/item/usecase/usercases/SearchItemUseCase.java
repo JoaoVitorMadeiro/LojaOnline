@@ -3,7 +3,7 @@ package com.lojaonline.item.usecase.usercases;
 import com.lojaonline.item.core.domain.Item;
 
 public interface SearchItemUseCase {
-    void searchItem(Item nameitem);
+    void searchItem(String nameitem);
 
-    void searchItemId(Item idItem);
+    void searchItemId(Long idItem);
 }

@@ -15,10 +15,12 @@ spring:
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
-      name: ${KAFKA_TOPIC:user}
+      user: ${KAFKA_TOPIC:user}
     consumer:
-      group-id: item-group
+      group-id: user-group
       auto-offset-reset: latest
+    server:
+      port: 9092
 logging:
   level:
     org:
@@ -31,7 +33,7 @@ api:
       secret: "${JWT_SECRET:32rASD213dsa}"
 
 server:
-    port: 8080
+    port: 8072
 
 eureka:
     client:
@@ -39,3 +41,4 @@ eureka:
             defaultZone: http://localhost:8761/eureka/
     instance:
         instanceId: ${spring.application.name}:${spring.application.instanceId:${random.value}}
+debug: true

@@ -2,6 +2,8 @@ package com.lojaonline.item.core.domain;
 
 import com.lojaonline.item.core.domain.enums.CategoryEnum;
 
+import java.time.LocalDateTime;
+
 
 public class Item {
     private Long id;
@@ -10,6 +12,8 @@ public class Item {
     public Integer price;
     public Integer quantity;
     private CategoryEnum Category;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 
     public Item(Long id, String name, String description, Integer price, Integer quantity, CategoryEnum category) {
@@ -19,6 +23,7 @@ public class Item {
         this.price = price;
         this.quantity = quantity;
         this.Category = category;
+        this.createdAt = LocalDateTime.now();
     }
 
     public Item() {
@@ -79,4 +84,21 @@ public class Item {
                 (this.quantity == null) ||
                 (this.Category == null);
     }
+    public boolean NameLimit(String name){
+        if(name.length() > 150){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean QuantityLimit(Integer quantity){
+        if (quantity >= 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

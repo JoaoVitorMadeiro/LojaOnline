@@ -8,14 +8,14 @@ import com.lojaonline.item.infrastructure.entity.Item;
 import com.lojaonline.item.infrastructure.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
+import org.springframework.web.client.RestTemplate;
 
 
 @Service
 public class ItemService {
     @Autowired
     private ItemRepository itemRepositopy;
+    private final RestTemplate restTemplate;
 
     public Item addItem(itemDtoRecord dto, boolean isAdmin) {
         if (isAdmin) {
@@ -61,4 +61,13 @@ public class ItemService {
             throw new RuntimeException("Você não tem permissão para deletar um item");
         }
     }
+
+    public ItemService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public Item getItemById(Long id) {
+        return restTemplate.getForObject("http://localhost:8080/item/" + id, Item.class);
+    }
+
 }

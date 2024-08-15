@@ -19,9 +19,9 @@ spring:
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
-      name: ${KAFKA_TOPIC:user}
+      item: ${KAFKA_TOPIC:item}
     consumer:
-      group-id: user-group
+      group-id: item-group
       auto-offset-reset: latest
 
 logging:

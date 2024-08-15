@@ -29,4 +29,5 @@ public class CreateUserUseCaseImpl implements CreateUserUSeCase {
         }
         var userSaved = createUserGateWay.userSaved(user);
     }
+
 }
