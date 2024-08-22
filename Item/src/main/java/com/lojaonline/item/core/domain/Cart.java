@@ -9,12 +9,14 @@ public class Cart {
     private Item item;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private boolean isPaid;
 
-    public Cart(Long id, Long idUser, Item item) {
+    public Cart(Long id, Long idUser, Item item, boolean isPaid) {
         this.id = id;
         this.idUser = idUser;
         this.item = item;
         this.createdAt = LocalDateTime.now();
+        this.isPaid = isPaid;
     }
 
     public Cart() {

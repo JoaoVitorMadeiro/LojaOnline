@@ -1,7 +1,7 @@
 package com.lojaonline.item.infrastructure.dto;
 
  import com.lojaonline.item.core.domain.enums.CategoryEnum;
- import com.lojaonline.item.infrastructure.entity.Item;
+ import com.lojaonline.item.infrastructure.entity.ItemEntity;
  import jakarta.persistence.GeneratedValue;
  import jakarta.persistence.GenerationType;
  import jakarta.persistence.Id;
@@ -26,7 +26,7 @@ package com.lojaonline.item.infrastructure.dto;
          this.categoria = categoria;
      }
 
-     public Item transformaItem() {
-         return new Item(nome, descricao, preco, quantidade, categoria);
+     public ItemEntity transformaItem() {
+         return new ItemEntity(nome, descricao, preco, quantidade, categoria);
      }
  }

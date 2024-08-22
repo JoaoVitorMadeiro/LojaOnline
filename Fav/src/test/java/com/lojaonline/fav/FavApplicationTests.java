@@ -1,10 +1,10 @@
-package com.lojaonline.item;
+package com.lojaonline.fav;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ItemApplicationTests {
+class FavApplicationTests {
 
     @Test
     void contextLoads() {

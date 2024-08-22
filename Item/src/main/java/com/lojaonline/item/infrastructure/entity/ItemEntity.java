@@ -17,7 +17,7 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode(of = "id")
-public class Item {
+public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,6 +29,6 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private CategoryEnum categoria;
 
-    public Item(String nome, String descricao, Integer preco, Integer quantidade, CategoryEnum categoria) {
+    public ItemEntity(String nome, String descricao, Integer preco, Integer quantidade, CategoryEnum categoria) {
     }
 }

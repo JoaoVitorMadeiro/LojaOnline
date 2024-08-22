@@ -2,7 +2,7 @@ package com.lojaonline.item.infrastructure.dto;
 
 
 import com.lojaonline.item.core.domain.enums.CategoryEnum;
-import com.lojaonline.item.infrastructure.entity.Item;
+import com.lojaonline.item.infrastructure.entity.ItemEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +20,7 @@ public class ItemRespostaDto {
     private CategoryEnum categoria;
 
 
-    public static ItemRespostaDto transformaEmDTO(Item item) {
+    public static ItemRespostaDto transformaEmDTO(ItemEntity itemEntity) {
         return new ItemRespostaDto();
     }
 

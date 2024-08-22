@@ -16,9 +16,15 @@ spring:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
       user: ${KAFKA_TOPIC:user}
-    consumer:
-      group-id: user-group
-      auto-offset-reset: latest
+    producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        acks: all
+        retries: 3
+        properties:
+            linger.ms: 1
+            enable.idempotence: true
+
     server:
       port: 9092
 logging:

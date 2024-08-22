@@ -1,7 +1,7 @@
 package com.lojaonline.item.infrastructure.controller;
 
 import com.lojaonline.item.infrastructure.dto.itemDtoRecord;
-import com.lojaonline.item.infrastructure.entity.Item;
+import com.lojaonline.item.infrastructure.entity.ItemEntity;
 import com.lojaonline.item.infrastructure.service.ItemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -34,22 +34,22 @@ public class ItemController {
         @ApiResponse(responseCode = "409", ref = "conflict")
 })
     @PostMapping
-    public  ResponseEntity <Item>  addItem(@RequestBody itemDtoRecord dto, @RequestParam boolean isAdmin) {
-      Item item = itemService.addItem(dto, isAdmin);
-      return new ResponseEntity<>(item, HttpStatus.CREATED);
+    public  ResponseEntity <ItemEntity>  addItem(@RequestBody itemDtoRecord dto, @RequestParam boolean isAdmin) {
+      ItemEntity itemEntity = itemService.addItem(dto, isAdmin);
+      return new ResponseEntity<>(itemEntity, HttpStatus.CREATED);
     }
     @GetMapping("/nome/{nome}")
-    public Item buscarPorNome(@PathVariable("nome") String nome) {
+    public ItemEntity buscarPorNome(@PathVariable("nome") String nome) {
         return itemService.buscarPorNome(nome);
     }
     @GetMapping("/{id}")
-    public Item buscarPorId(@PathVariable("id") Long id) {
+    public ItemEntity buscarPorId(@PathVariable("id") Long id) {
         return itemService.buscarPorId(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteItem(@PathVariable("id") Item idItem,  @RequestParam boolean isAdmin) {
-        itemService.deleteItem(idItem, isAdmin);
+    public void deleteItem(@PathVariable("id") ItemEntity idItemEntity, @RequestParam boolean isAdmin) {
+        itemService.deleteItem(idItemEntity, isAdmin);
     }
 
 
