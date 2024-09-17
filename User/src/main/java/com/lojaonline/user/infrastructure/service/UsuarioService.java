@@ -15,7 +15,7 @@ public class UsuarioService {
     }
 
     public UserEntity save(UsuarioDTO usuarioDTO) {
-        UserEntity usuario = new UserEntity();
+        UserEntity usuario = new UserEntity("name", "emaill", "password", "type");
         usuario.setName(usuarioDTO.getNome());
         usuario.setEmail(usuarioDTO.getEmail());
         usuario.setPassword(usuarioDTO.getSenha());

@@ -3,9 +3,11 @@ package com.lojaonline.item.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.lojaonline.item.infrastructure.entity.ItemEntity;
 
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,12 +17,13 @@ import java.util.Calendar;
 @EqualsAndHashCode(of = "id")
 @ToString
 @Table(name = "carrrinho")
+
 public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Long idUser;
-    private Long idItem;
     private String itemEntity;
     private Integer quantidade;
     private Integer preco;
@@ -28,4 +31,6 @@ public class CartEntity {
     private String status;
     private LocalDateTime dataCadastro = LocalDateTime.now();
     private LocalDateTime dataAtualizacao = LocalDateTime.now();
+
+
 }

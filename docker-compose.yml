@@ -1,0 +1,88 @@
+version: "2.29.1"
+networks:
+  loja_online:
+    driver: bridge
+services:
+  db:
+    image: mariadb:latest
+    container_name: DataBase
+    networks:
+      - loja_online
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: loja_online
+      MYSQL_USER: test
+      MYSQL_PASSWORD: 1234
+      MARIADB_ROOT_PASSWORD: 1234
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: ZookeeperServer
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - loja_online
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: KafkaServer
+    networks:
+      - loja_online
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_REPLICATION_FACTOR: 3
+      KAFKA_PARTITIONS: 3
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  user:
+    image: ms-user
+    container_name: MicroserviceUser
+    ports:
+      - "8081:8080"
+    networks:
+      - loja_online
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://DataBase:3306/loja_online
+      - SPRING_DATASOURCE_USERNAME=test
+      - SPRING_DATASOURCE_PASSWORD=1234
+    depends_on:
+      - db
+
+  item:
+    image: ms-item
+    container_name: MicroserviceItem
+    ports:
+      - "8080:8081"
+    networks:
+      - loja_online
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://DataBase:3306/loja_online
+      - SPRING_DATASOURCE_USERNAME=test
+      - SPRING_DATASOURCE_PASSWORD=1234
+    depends_on:
+      - db
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+  mariadb_data:
+    driver: local

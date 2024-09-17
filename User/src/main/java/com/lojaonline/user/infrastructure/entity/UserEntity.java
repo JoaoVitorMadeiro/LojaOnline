@@ -11,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Table(name = "usuario")
+@ToString
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +20,7 @@ public class UserEntity {
     private String email;
     private String password;
     private String type;
+
+    public UserEntity(String name, String emaill, String password, String type) {
+    }
 }

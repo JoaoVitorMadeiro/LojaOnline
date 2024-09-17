@@ -35,7 +35,7 @@ public class FavService {
         if(itemEntity != null){
             CartEntity cartEntity = new CartEntity();
             cartEntity.setIdUser(idUser);
-            cartEntity.setIdItem(idItem);
+            cartEntity.setItemEntity(String.valueOf(itemEntity));
             cartEntity.setPreco(itemEntity.getPreco());
         }
         return null;

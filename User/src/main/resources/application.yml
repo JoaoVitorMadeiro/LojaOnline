@@ -7,44 +7,51 @@ spring:
     password: 1234
     driver-class-name: org.mariadb.jdbc.Driver
 
+
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
       ddl-auto: update
     show-sql: true
-  kafka:
-    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
-    topic:
-      user: ${KAFKA_TOPIC:user}
-    producer:
-        key-serializer: org.apache.kafka.common.serialization.StringSerializer
-        value-serializer: org.apache.kafka.common.serialization.StringSerializer
-        acks: all
-        retries: 3
-        properties:
-            linger.ms: 1
-            enable.idempotence: true
 
-    server:
-      port: 9092
-logging:
+  zookeeper:
+    client-port: zookeeper:2181
+
+  kafka:
+    kafka-zookeeper:
+      connect: zookeeper:2181
+    admin:
+      topics:
+        topic:
+          name: UserTopic
+          partition: 1
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: kafka:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: User-group
+      enable-auto-commit: false
+      bootstrap-servers: kafka:9092
+    bootstrap-servers: kafka:9092
+    properties:
+      security:
+        protocol: PLAINTEXT
   level:
     org:
       apache:
-        kafka: OFF
+        kafka: debug
 
-api:
-  security:
-    token:
-      secret: "${JWT_SECRET:32rASD213dsa}"
+  api:
+    security:
+      token:
+        secret: "${JWT_SECRET:32rASD213dsa}"
 
-server:
-    port: 8072
+  server:
+      port: 8072
 
-eureka:
-    client:
-        serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
-    instance:
-        instanceId: ${spring.application.name}:${spring.application.instanceId:${random.value}}
-debug: true
+  debug: true
+
+

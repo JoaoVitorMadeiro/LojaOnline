@@ -18,6 +18,7 @@ public class FavEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long idUser;
+
     private Long idItem;
     private LocalDateTime dataCadastro = LocalDateTime.now();
     private LocalDateTime dataAtualizacao = LocalDateTime.now();

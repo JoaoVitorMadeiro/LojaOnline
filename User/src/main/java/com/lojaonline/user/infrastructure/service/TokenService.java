@@ -22,7 +22,7 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
-    @Value("${api.security.token.secret}")
+    @Value("${spring.api.security.token.secret}")
     private String secret;
 
     public String generateToken(UsuarioDetails usuario) {

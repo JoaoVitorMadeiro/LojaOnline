@@ -2,6 +2,7 @@ package com.lojaonline.user.infrastructure.mapper;
 
 import com.lojaonline.user.infrastructure.dto.UsuarioDTO;import com.lojaonline.user.infrastructure.dto.UsuarioRepostaDTO;
 import com.lojaonline.user.infrastructure.entity.UserEntity;
+import com.lojaonline.user.infrastructure.service.KafkaMessageProducer;
 import com.lojaonline.user.infrastructure.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 
 public class UserController {
+    private final KafkaMessageProducer kafkaMessageProducer;
     private UsuarioService userService;
 
-    public UserController(UsuarioService userService) {
+    public UserController(UsuarioService userService, KafkaMessageProducer kafkaMessageProducer) {
         this.userService = userService;
+        this.kafkaMessageProducer = kafkaMessageProducer;
     }
 
     @Operation(summary = "record a new permission", description = "save a new book in database", responses = {
@@ -37,6 +40,9 @@ public class UserController {
         return "ok";
     }
 
-
+    @PostMapping("/enviar mensagem")
+    public void enviarMensagem(@RequestParam String token, @RequestParam String userType) {
+        kafkaMessageProducer.sendMessage(token, userType);
+    }
 
 }

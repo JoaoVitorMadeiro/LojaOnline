@@ -26,7 +26,7 @@ import com.lojaonline.user.infrastructure.dto.UsuarioRegisterDTO;
 @RestController
 @RequestMapping("/auth")
 public class AuthMapper {
-    @Autowired
+
     private AuthenticationManager authManager;
     @Autowired
     private TokenService tokenService;
