@@ -6,6 +6,7 @@ import com.lojaonline.user.infrastructure.service.KafkaMessageProducer;
 import com.lojaonline.user.infrastructure.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import jdk.jshell.Snippet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +31,13 @@ public class UserController {
             @ApiResponse(responseCode = "404", ref = "ResourceNotFound"),
             @ApiResponse(responseCode = "409", ref = "conflict")
     })
-    @PostMapping
-    public ResponseEntity<UserEntity> save(UsuarioDTO dto) {
+    @PostMapping("/save")
+    public ResponseEntity<UserEntity> save(@Valid @RequestBody UsuarioDTO dto) {
+
+        if(dto.getSenha().length() < 8 && dto.getSenha().contains("ABCDEFGHIJKLMNOPQRSTUVWXYZ") && dto.getSenha().contains("abcdefghijklmnopqrstuvwxyz") && dto.getSenha().contains("!@#$%¨&*()_+")) {
+            throw new IllegalArgumentException("Password must be at least 8 characters");
+        }
+
        UserEntity savedUser = userService.save(dto);
        return new ResponseEntity<UserEntity>(savedUser, HttpStatus.CREATED);
     }

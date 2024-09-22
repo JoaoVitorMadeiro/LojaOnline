@@ -1,0 +1,65 @@
+package com.lojaonline.user.usecase.usecases;
+
+public interface WalletUsecase {
+    void createWallet();
+    void getWallet();
+    void updateWallet();
+    void deleteWallet();
+
+    void addMoney();
+    void removeMoney();
+    void transferMoney();
+    void getTransactions();
+
+    void getWalletByUser();
+    void getWalletByUserAndStore();
+    void getWalletByStore();
+    void getWalletByStoreAndUser();
+    void getWalletByStoreAndUserAndDate();
+    void getWalletByStoreAndUserAndDateRange();
+    void getWalletByStoreAndUserAndTransactionType();
+    void getWalletByStoreAndUserAndTransactionTypeAndDate();
+    void getWalletByStoreAndUserAndTransactionTypeAndDateRange();
+    void getWalletByStoreAndUserAndTransactionTypeAndDateAndValue();
+    void getWalletByStoreAndUserAndTransactionTypeAndDateRangeAndValue();
+    void getWalletByStoreAndUserAndTransactionTypeAndValue();
+    void getWalletByStoreAndUserAndTransactionTypeAndValueRange();
+    void getWalletByStoreAndUserAndValue();
+    void getWalletByStoreAndUserAndValueRange();
+    void getWalletByStoreAndValue();
+    void getWalletByStoreAndValueRange();
+    void getWalletByTransactionType();
+    void getWalletByTransactionTypeAndDate();
+    void getWalletByTransactionTypeAndDateRange();
+    void getWalletByTransactionTypeAndDateAndValue();
+    void getWalletByTransactionTypeAndDateRangeAndValue();
+    void getWalletByTransactionTypeAndValue();
+    void getWalletByTransactionTypeAndValueRange();
+    void getWalletByUserAndDate();
+    void getWalletByUserAndDateRange();
+    void getWalletByUserAndTransactionType();
+    void getWalletByUserAndTransactionTypeAndDate();
+    void getWalletByUserAndTransactionTypeAndDateRange();
+    void getWalletByUserAndTransactionTypeAndDateAndValue();
+    void getWalletByUserAndTransactionTypeAndDateRangeAndValue();
+    void getWalletByUserAndTransactionTypeAndValue();
+    void getWalletByUserAndTransactionTypeAndValueRange();
+    void getWalletByUserAndValue();
+    void getWalletByUserAndValueRange();
+    void getWalletByValue();
+    void getWalletByValueRange();
+    void getWalletByDate();
+    void getWalletByDateRange();
+    void getWalletByDateAndValue();
+    void getWalletByDateRangeAndValue();
+    void getWalletByStoreAndDate();
+    void getWalletByStoreAndDateRange();
+    void getWalletByStoreAndDateAndValue();
+    void getWalletByStoreAndDateRangeAndValue();
+    void getWalletByStoreAndTransactionTypeAndDate();
+    void getWalletByStoreAndTransactionTypeAndDateRange();
+    void getWalletByStoreAndTransactionTypeAndDateAndValue();
+    void getWalletByStoreAndTransactionTypeAndDateRangeAndValue();
+    void getWalletByStoreAndTransactionTypeAndValue();
+    void getWalletByStoreAndTransactionTypeAndValueRange();
+}

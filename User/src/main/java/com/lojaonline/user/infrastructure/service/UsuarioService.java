@@ -15,13 +15,21 @@ public class UsuarioService {
     }
 
     public UserEntity save(UsuarioDTO usuarioDTO) {
-        UserEntity usuario = new UserEntity("name", "emaill", "password", "type");
-        usuario.setName(usuarioDTO.getNome());
-        usuario.setEmail(usuarioDTO.getEmail());
-        usuario.setPassword(usuarioDTO.getSenha());
-        usuario.setType(usuarioDTO.getRole());
-        return usuarioRepository.save(usuario);
+
+        if (usuarioDTO.getSenha().length() < 8 && usuarioDTO.getSenha().contains("ABCDEFGHIJKLMNOPQRSTUVWXYZ") && usuarioDTO.getSenha().contains("abcdefghijklmnopqrstuvwxyz") && usuarioDTO.getSenha().contains("!@#$%¨&*()_+")) {
+            throw new IllegalArgumentException("Password must be at least 8 characters");
+        }
+
+        UserEntity user = usuarioRepository.save(UserEntity.builder()
+                .name(usuarioDTO.getNome())
+                .email(usuarioDTO.getEmail())
+                .password(usuarioDTO.getSenha())
+                .type(usuarioDTO.getRole())
+                .build());
+
+        return  user;
     }
+
 
     public UserEntity findByEmail(String email) {
         return usuarioRepository.findByName(email);
