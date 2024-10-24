@@ -1,13 +1,14 @@
 package com.lojaonline.user.infrastructure.mapper;
 
-import com.lojaonline.user.infrastructure.dto.UsuarioDTO;import com.lojaonline.user.infrastructure.dto.UsuarioRepostaDTO;
+import com.lojaonline.user.infrastructure.dto.UsuarioDTO;
+
+
 import com.lojaonline.user.infrastructure.entity.UserEntity;
 import com.lojaonline.user.infrastructure.service.KafkaMessageProducer;
 import com.lojaonline.user.infrastructure.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
-import jdk.jshell.Snippet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
